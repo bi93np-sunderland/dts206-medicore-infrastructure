@@ -1,7 +1,7 @@
 # ==========================================
 # STAGE 1: The Builder Environment
 # ==========================================
-FROM python:3.10-slim AS builder
+FROM python:3.11-slim AS builder
 
 WORKDIR /build
 
@@ -14,7 +14,7 @@ RUN pip install --user --no-cache-dir -r requirements.txt
 # ==========================================
 # STAGE 2: The Production Environment
 # ==========================================
-FROM python:3.10-slim
+FROM python:3.11-slim
 
 WORKDIR /app
 
@@ -34,7 +34,7 @@ ENV PATH=/home/appuser/.local/bin:$PATH
 RUN chown -R appuser:appuser /app
 
 # Switch to the non-root user
-USER 1001
+USER appuser
 
 # Expose the port the app runs on
 EXPOSE 8080
