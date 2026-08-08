@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  medicore-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: medicore-app:latest
+    container_name: medicore-app
+    ports:
+      - "8080:8080"
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+    secrets:
+      - db_password
+    environment:
+      - DB_PASSWORD_FILE=/run/secrets/db_password
+    restart: unless-stopped
+
+secrets:
+  db_password:
+    file: ./db_password.txt
