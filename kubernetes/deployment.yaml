@@ -1,24 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: medicore-deployment
+  name: medicore-app
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: medicore-app
+      app: medicore
   template:
     metadata:
       labels:
-        app: medicore-app
+        app: medicore
     spec:
       securityContext:
         runAsNonRoot: true
         runAsUser: 1001
       containers:
       - name: medicore-container
-        image: mendhak/http-https-echo:31
-        imagePullPolicy: IfNotPresent
+        image: medicore-app:latest
         resources:
           requests:
             memory: "128Mi"
@@ -30,5 +29,5 @@ spec:
           httpGet:
             path: /health
             port: 8080
-          initialDelaySeconds: 5
+          initialDelaySeconds: 15
           periodSeconds: 10
