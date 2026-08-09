@@ -22,7 +22,7 @@ The technical evidence for this assignment is organized into the following direc
 * **`/kubernetes`**
   Contains the YAML deployment and service manifests used to orchestrate the application. These manifests enforce High Availability (HA), self-healing, resource limits, and strict Pod Security Contexts.
 * **`/analysis`**
-  Contains the Python data analysis script (`analyze.py`), the `pandas` requirements, and the clinical infrastructure monitoring dataset used for Deliverable A6.
+  Contains the Python data analysis script (`analyse.py`), the `pandas` requirements, and the clinical infrastructure monitoring dataset used for Deliverable A6.
 * **`/screenshots`**
   The visual evidence vault containing all terminal outputs referenced as Figures within the final written report.
 
